@@ -1,6 +1,6 @@
 import { computed } from "vue";
 import { useStore } from "vuex";
-
+import { Job } from "@/api/types";
 import {
   FILTERED_JOBS,
   UNIQUE_JOB_TYPES,
@@ -11,17 +11,17 @@ import {
 /* GETTERS */
 export const useFilteredJobs = () => {
   const store = useStore();
-  return computed(() => store.getters[FILTERED_JOBS]);
+  return computed<Job[]>(() => store.getters[FILTERED_JOBS]);
 };
 
 export const useUniqueJobTypes = () => {
   const store = useStore();
-  return computed(() => store.getters[UNIQUE_JOB_TYPES]);
+  return computed<Set<string>>(() => store.getters[UNIQUE_JOB_TYPES]);
 };
 
 export const useUniqueOrganizations = () => {
   const store = useStore();
-  return computed(() => store.getters[UNIQUE_ORGANIZATIONS]);
+  return computed<Set<string>>(() => store.getters[UNIQUE_ORGANIZATIONS]);
 };
 
 /* ACTIONS */
